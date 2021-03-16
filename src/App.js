@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  // Redirect,
+  Switch,
+  NavLink,
+} from "react-router-dom";
+import { ToastProvider } from "react-toast-notifications";
+import "./App.css";
+
+import Home from "./pages/Home/Home";
+import Profile from "./pages/Profile/Profile";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+      <header>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/profile">Profile</NavLink>
+      <NavLink to="/pile">Not Found Test link</NavLink>
+    </header>
+        <ToastProvider autoDismiss={true}>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/profile" component={Profile} />
+            <Route path="*" component={NotFound} />
+          </Switch>
+        </ToastProvider>
+      </Router>
     </div>
   );
 }
