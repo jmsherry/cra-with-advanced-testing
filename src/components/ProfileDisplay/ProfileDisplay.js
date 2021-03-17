@@ -1,19 +1,19 @@
 import React from "react";
 
-function ProfileDisplay({ user: { firstName, lastName, avatar_url } }) {
+function ProfileDisplay({ user: { name, picture } }) {
   return (
     <div>
       <h1>Profile</h1>
       <div className="container">
         <img
           className="avatar"
-          src={avatar_url}
-          alt={`${firstName} ${lastName}`}
+          src={picture}
+          alt={name}
         />
         <dl>
           <dt>Name:</dt>
           <dd>
-            {firstName} {lastName}
+            {name}
           </dd>
         </dl>
       </div>
